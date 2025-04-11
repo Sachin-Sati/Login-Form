@@ -61,4 +61,4 @@ Feel free to submit issues and pull requests.
 
 MIT License
 
-Copyright (c) 2024
+Copyright (c) 2025
