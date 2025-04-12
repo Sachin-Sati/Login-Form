@@ -1,9 +1,10 @@
 import { useState } from "react"
-import InputField from "./InputField";
+import InputField from "./InputField"
 import SocialLogin from "./SocialLogin"
-import { auth } from "../utils/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { auth } from "../utils/firebase"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { Link } from "react-router-dom"
+import showToast from '../utils/toast'
 
 const LoginForm = () => {
     // set form values
@@ -16,9 +17,11 @@ const LoginForm = () => {
         signInWithEmailAndPassword(auth, form.email, form.password)
         .then((userCredential) => {
         console.log('Logged in as: ', userCredential.user.email);
+        showToast('success', 'Logged in successfully!');
         })
         .catch((error) => {
         console.log('Login Error: ', error.message);
+        showToast('error', 'Failed to login. Please try again.');
         });
     }
     return (

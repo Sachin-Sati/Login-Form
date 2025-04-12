@@ -4,12 +4,14 @@ import SocialLogin from "./SocialLogin"
 import { auth } from "../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import showToast from "../utils/toast";
 
 const SignUpForm = () => {
     // navigate
     const navigate = useNavigate();
     // set form values
-    const [form, setForm] = useState({ email: "", password: "" }); 
+    const [form, setForm] = useState({ username: "", email: "", password: "" }); 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]:e.target.value});
     }
@@ -17,11 +19,13 @@ const SignUpForm = () => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, form.email, form.password)
         .then((userCredential) => {
-        console.log('Signed in as: ', userCredential.user.email);
-        navigate("/");      // navigate to login
+            console.log('Signed up as: ', userCredential.user.email);
+            showToast('success', 'Signed up successfully!');
+            navigate("/");      // navigate to login
         })
         .catch((error) => {
-        console.log('Signup Error: ', error.message);
+            console.log('Signup Error: ', error.message);
+            showToast('error', 'Failed to signup. Please try again.');
         });
     }
     return (
@@ -30,6 +34,7 @@ const SignUpForm = () => {
         <SocialLogin />
         <p className="seperator"><span>Or</span></p>
         <form className="login-form" onSubmit={handleSignUp}>
+            <InputField type="text" placeholder="Username" icon="person" name="username" onChange={handleChange} />
             <InputField type="email" placeholder="Email Address" icon="mail" name="email" onChange={handleChange} />
             <InputField type="password" placeholder="Password" icon="lock" name="password" onChange={handleChange} />
 
