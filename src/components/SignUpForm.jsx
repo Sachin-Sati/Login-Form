@@ -3,7 +3,7 @@ import InputField from "./InputField";
 import SocialLogin from "./SocialLogin"
 import { auth } from "../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SignUpForm = () => {
     // navigate
@@ -36,7 +36,7 @@ const SignUpForm = () => {
             <button className="login-button">Sign Up</button>
         </form>
 
-        <p className="signup-text">Already have an account?<a href="/">Login</a></p>
+        <p className="signup-text">Already have an account?<Link to="/">Login</Link></p>
         </div>
     )
 }

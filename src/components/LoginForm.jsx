@@ -3,6 +3,7 @@ import InputField from "./InputField";
 import SocialLogin from "./SocialLogin"
 import { auth } from "../utils/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
     // set form values
@@ -33,7 +34,7 @@ const LoginForm = () => {
             <button className="login-button">Log In</button>
         </form>
 
-        <p className="signup-text">Don&apos;t have an account?<a href="/signup">Sign Up</a></p>
+        <p className="signup-text">Don&apos;t have an account?<Link to="/signup">Sign Up</Link></p>
         </div>
     )
 }
