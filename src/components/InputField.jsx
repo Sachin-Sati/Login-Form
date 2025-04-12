@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
 
-const InputField = ({type, placeholder, icon}) => {
+const InputField = ({type, placeholder, icon, name, onChange}) => {
     // State to toggle password visibility
     const [isPasswordShown, setIsPassowrdShown] = useState(false);
     const handleClick = () => {
         setIsPassowrdShown(!isPasswordShown);
-    } 
+    }
   return (
     <div className="input-wrapper">
         <input 
-        className="input-field" 
+        className="input-field"
+        name={name}
         type={isPasswordShown ? 'text' : type} 
         placeholder={placeholder} 
-        required 
+        required
+        onChange={onChange}
         />
-        <i class="material-symbols-outlined">{icon}</i>
+        <i className="material-symbols-outlined">{icon}</i>
         {type === 'password' && (
-            <i onClick={handleClick} class="material-symbols-outlined eye-icon">
+            <i onClick={handleClick} className="material-symbols-outlined eye-icon">
                 {isPasswordShown ? 'visibility' : 'visibility_off'}
             </i>
         )}
