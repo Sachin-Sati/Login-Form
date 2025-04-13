@@ -21,7 +21,7 @@ const LoginForm = () => {
         })
         .catch((error) => {
         console.log('Login Error: ', error.message);
-        showToast('error', 'Failed to login. Please try again.');
+        showToast('error', `Failed to login. Please try again.`);
         });
     }
     return (

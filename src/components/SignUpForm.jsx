@@ -25,7 +25,7 @@ const SignUpForm = () => {
         })
         .catch((error) => {
             console.log('Signup Error: ', error.message);
-            showToast('error', 'Failed to signup. Please try again.');
+            showToast("error", `Please try again.`);
         });
     }
     return (

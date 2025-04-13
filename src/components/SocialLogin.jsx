@@ -14,6 +14,7 @@ const SocialLogin = () => {
     });
   }
   const handleGitHubSignIn = () => {
+    console.log("Redirecting using provider:", githubProvider);
     signInWithPopup(auth, githubProvider)
     .then((result) => {
       const user = result.user;
